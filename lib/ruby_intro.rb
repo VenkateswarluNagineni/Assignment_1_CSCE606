@@ -40,13 +40,27 @@ end
 # Object representing a book
 class BookInStock
   # YOUR CODE HERE
-  attr_accessor :isbn, :price
-
   def initialize(isbn, price)
-    raise ArgumentError, "Invalid ISBN" if isbn.empty?
-    raise ArgumentError, "Invalid price" if price <= 0
-    @isbn = isbn
-    @price = price
+    self.isbn = isbn
+    self.price = price
+  end
+
+  def isbn
+    @isbn
+  end
+
+  def isbn=(value)
+    raise ArgumentError, "ISBN cannot be empty" if value.empty?
+    @isbn = value
+  end
+
+  def price
+    @price
+  end
+
+  def price=(value)
+    raise ArgumentError, "Price must be greater than 0" if value <= 0
+    @price = value
   end
 
   def price_as_string
